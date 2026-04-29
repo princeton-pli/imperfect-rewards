@@ -1,0 +1,16 @@
+weighted_alpaca_eval_gpt41:
+  prompt_template: null  # Resolved to an absolute path at runtime by alpaca_eval_script.py
+  fn_completions: "openai_completions"
+  completions_kwargs:
+    model_name: "gpt-4.1-2025-04-14"
+    max_tokens: 1
+    temperature: 1 # temperature should be applied for sampling, so that should make no effect.
+    logprobs: true
+    top_logprobs: 5
+  fn_completion_parser: "logprob_parser"
+  completion_parser_kwargs:
+    numerator_token: "m"
+    denominator_tokens: ["m", "M"]
+    is_binarize: false
+  completion_key: "completions_all"
+  batch_size: 1

@@ -1,0 +1,28 @@
+Bootstrap: docker
+From: python:3.10-slim
+
+%files
+    open_instruct/__init__.py /app/open_instruct/__init__.py
+    open_instruct/logger_utils.py /app/open_instruct/logger_utils.py
+    open_instruct/code_utils/__init__.py /app/open_instruct/code_utils/__init__.py
+    open_instruct/code_utils/api.py /app/open_instruct/code_utils/api.py
+    open_instruct/code_utils/code_utils.py /app/open_instruct/code_utils/code_utils.py
+    open_instruct/code_utils/testing_util.py /app/open_instruct/code_utils/testing_util.py
+    open_instruct/code_utils/requirements.txt /app/requirements.txt
+
+%post
+    python -m pip install --no-cache-dir -r /app/requirements.txt
+    mkdir -p /app/cache
+    chmod 777 /app/cache
+
+%environment
+    export PYTHONUNBUFFERED=1
+    export PYTHONPATH=/app:$PYTHONPATH
+
+%runscript
+    cd /app
+    exec uvicorn open_instruct.code_utils.api:app --host 0.0.0.0 --port 1234 "$@"
+
+%startscript
+    cd /app
+    exec uvicorn open_instruct.code_utils.api:app --host 0.0.0.0 --port 1234

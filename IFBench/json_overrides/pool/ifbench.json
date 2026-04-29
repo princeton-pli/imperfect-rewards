@@ -1,0 +1,14 @@
+[
+    "count:numbers", 
+    "count:punctuation",
+    "format:quotes",
+    "format:newline",
+    "words:start_verb",
+    "words:repeats",
+    "count:pronouns",
+    "words:last_first",
+    "sentence:increment",
+    "custom:multiples",
+    "count:person_names", 
+    "words:alphabet"
+]

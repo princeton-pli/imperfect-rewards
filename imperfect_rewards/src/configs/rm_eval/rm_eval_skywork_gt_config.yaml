@@ -1,0 +1,44 @@
+do_rlhf: false
+do_rm_eval: true
+
+cache_dir: 
+seed: 475
+
+rm_eval_config:
+  save_generated_responses: true
+  only_lm_eval: false
+  output_dir_base: PATH_TO_OUTPUT_FOLDER
+  dataset_paths: [ "FILL_PATH_TO_RELABELED_ULTRAFEEDBACK_DATASET_HERE" ]
+  load_dataset_from_file_flags: [ true ]
+  train_splits: [ "train_rlhf_prefs" ]
+  test_splits: [ "test_prefs" ]
+  num_train_samples: [ 500 ]
+  num_test_samples: [ 500 ]
+  data_selection_seed: 546
+  rm_batch_size: 16
+  lm_batch_size: 4
+  language_model_path: FILL_PATH_TO_LANGUAGE_MODEL_HERE
+  is_lora_lm: false
+  lora_base_language_model_path: ""
+  ground_truth_reward_model_path: Skywork/Skywork-Reward-V2-Llama-3.1-8B
+  proxy_reward_models:
+    - "RLHFlow/ArmoRM-Llama3-8B-v0.1"  # RB2 score: 66.5
+    - "Skywork/Skywork-Reward-V2-Qwen3-8B" # RB2 score: 78.4
+#    - "Skywork/Skywork-Reward-V2-Qwen3-4B" # RB2 score: 75.5
+    - "allenai/Llama-3.1-8B-Instruct-RM-RB2" # RB2 score: 72.8
+#    - "Skywork/Skywork-Reward-V2-Qwen3-1.7B" # RB2 score: 68.2
+    - "NCSOFT/Llama-3-OffsetBias-RM-8B" # RB2 score: 64.8, RB1 score: 89.4
+    - "Ray2333/GRM-Llama3.2-3B-rewardmodel-ft" # No RB2 score, RB1 score: 90.9
+#    - "Skywork/Skywork-Reward-V2-Llama-3.2-1B" # RB2 score: 64.4
+#    - "Skywork/Skywork-Reward-V2-Qwen3-0.6B" # RB2 score: 61.2
+    - "weqweasdas/RM-Mistral-7B" # RB2 score: 59.6 , RB1 score: 80.4
+    - "internlm/internlm2-1_8b-reward" # RB2 score: 39.0, RB1 score: 82.2
+    - "allenai/llama-3-tulu-2-8b-uf-mean-rm" # No RB2 score, RB1 score: 74.5
+    - "weqweasdas/RM-Gemma-2B" # RB2 score: 30.6
+  generation_config:
+    temperature: 1
+    #    max_length: 512
+    max_new_tokens: 512
+    do_sample: true
+    num_return_sequences: 10
+

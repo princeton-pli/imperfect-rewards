@@ -1,0 +1,5 @@
+default:
+    - api_key: 
+
+gpt4_1106_preview:
+  - "default"

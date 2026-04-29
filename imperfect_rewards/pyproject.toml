@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "imperfect-rewards"
+version = "0.1.0"
+description = ""
+authors = [{name = "Princeton Language and Intelligence (PLI), Princeton University"}]
+requires-python = ">=3.10"
+dependencies=[
+    'transformers==4.51.3', # There will be an error when using Armo RM; comment out manually in Armo mdelling file
+    'trl', 
+    'accelerate == 1.2.0', 
+    'matplotlib',
+    'seaborn', 
+    'deepspeed == 0.15.4',
+    'peft', 
+    'alpaca-eval == 0.6.6', 
+    'tensorboard >= 1.15', 
+    'rich==15.0.0'
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

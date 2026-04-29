@@ -1,0 +1,29 @@
+seed: 163
+relabel_config:
+  cache_dir: 
+  output_dir: data_files/rewardbench2_armorm_relabeled
+  initial_dataset_path: data_files/rewardbench_2_one_vs_many_reformatted
+  load_dataset_from_file: true
+  train_split:
+  test_split: test
+  score_chosen_name: score_chosen
+  score_rejected_name: score_rejected
+  prompt_id_name: id # we will rename id into prompt_id
+  frac_train_for_rlhf: 0 # in case no test split, will use this to split from training set
+  train_split_seed: 1283
+  num_train_samples_from_initial_dataset: -1
+  reward_model_path: RLHFlow/ArmoRM-Llama3-8B-v0.1
+  rm_batch_size: 64
+  gpu_id: 0
+  tokenizer_for_length_filtering: # If given, will use this tokenizer instead of the reward model tokenizer for filtering samples with long prompts and responses
+  max_prompt_length: -1
+  max_response_length: -1
+  filter_equals: true
+  generation_config:
+    temperature: 1
+    #    max_length: 512
+    max_new_tokens: 512
+    do_sample: true
+    top_k:
+  push_to_hub: false
+  private: true

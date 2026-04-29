@@ -1,0 +1,7 @@
+{
+    "count:numbers": {"N": 13},
+    "words:repeats": {"small_n": 10}, 
+    "count:pronouns": {"N": 5}, 
+    "sentence:increment": {"small_n": 5}, 
+    "count:person_names": {"N": 7}
+}
