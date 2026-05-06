@@ -15,7 +15,7 @@ PAIR_SLUG="${PAIR_SLUG%__}"   # e.g. count_pronouns__custom_multiples
 
 EXP_NAME="$PAIR_SLUG"
 RUN_DATE="$(date +%m_%d_%Y)"
-OUT_DIR="/scratch/gpfs/ARORA/hs6702/RMErrors/pg_vr/olmo_1B_instruct/below_6k/${PAIR_SLUG}/${RUN_DATE}/weighted_wo_kl_low_lr/"
+OUT_DIR="pg_vr/olmo_1B_instruct/${PAIR_SLUG}/${RUN_DATE}/partial_credit/"
 mkdir -p "$OUT_DIR"
 
 TRAIN_DS="<YOUR_OUTPUT_DATA_DIR>/${PAIR_SLUG}__train_prefs/dataset.jsonl"
